@@ -11,27 +11,33 @@ let
     };
   };
 
-  neovim0 = pkgs.neovim.override {
+  modificator-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "modificator-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "mawkler";
+      repo = "modicator.nvim";
+      rev = "f0edf906a230a4ca37a32aa510d4cd346db46548";
+      sha256 = "sha256-LTTqzNxkvGD8Niu+69OiRZuFWd+ikn/YNPFoYLI/ab4=";
+    };
+  };
+
+  neovim = pkgs.neovim.override {
     configure = {
       customRC = ''
-        function! Init()
-          let files = split(glob('${./config}/*'), '\n')
-          for file in files
-            let extension = fnamemodify(file, ':e')
-            if extension == 'lua'
-              execute 'luafile ' . file
-            elseif extension == 'vim'
-              execute 'source ' . file
-            endif
-            echo "Processed file: " . file
-          endfor
-        endfunction
-
-        autocmd VimEnter * call Init()
+        lua << EOF
+          package.path = package.path .. ';${./lua}/?.lua'; 
+          local ok, err = pcall(function() require("custom-config") end)
+          if not ok then 
+            vim.api.nvim_err_writeln(err)
+          end
+        EOF
       '';
 
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
+          modificator-nvim
+          alpha-nvim
+          comment-nvim
           coq-artifacts
           coq_nvim
           fidget-nvim
@@ -39,15 +45,13 @@ let
           gruvbox
           indent-blankline-nvim
           lualine-nvim
-          neo-tree-nvim
           neodev-nvim
           neoformat
-          nerdtree
           nui-nvim
           nvim-autopairs
           nvim-colorizer-lua
-          nvim-comment
           nvim-lspconfig
+          nvim-tree-lua
           nvim-treesitter
           nvim-treesitter-parsers.awk
           nvim-treesitter-parsers.bash
@@ -93,6 +97,8 @@ let
           plenary-nvim
           telescope-fzf-native-nvim
           telescope-nvim
+          telescope-undo-nvim
+          todo-comments-nvim
           toggleterm-nvim
           vim-ai
           vim-colorschemes
@@ -105,22 +111,6 @@ let
     };
   };
 
-  neovim = neovim0.overrideAttrs (finalAttrs: previousAttrs: {
-    buildInputs = previousAttrs.buildInputs or [ ] ++ [
-      pkgs.which
-      pkgs.git
-      pkgs.ripgrep
-      pkgs.fd
-      pkgs.lazygit
-      pkgs.python311
-      pkgs.niv
-      pkgs.neovim
-      pkgs.lua
-      pkgs.luaformatter
-      pkgs.black
-      pkgs.nixfmt
-    ];
-  });
   additionalPackages = [
     pkgs.bash
     pkgs.black
@@ -128,6 +118,7 @@ let
     pkgs.git
     pkgs.lazygit
     pkgs.lua
+    pkgs.lua-language-server
     pkgs.luaformatter
     pkgs.neovim
     pkgs.niv
@@ -135,9 +126,8 @@ let
     pkgs.python311
     pkgs.ripgrep
     pkgs.which
-];
-in 
-pkgs.stdenv.mkDerivation {
+  ];
+in pkgs.stdenv.mkDerivation {
   name = "nopevim";
   srcs = ./.;
   nativeBuildInputs = with pkgs; [ makeWrapper ];
@@ -145,7 +135,7 @@ pkgs.stdenv.mkDerivation {
 
   postInstall = ''
     makeWrapper ${neovim}/bin/nvim $out/bin/nopevim \
-      --prefix PATH : "${lib.makeBinPath additionalPackages }"
+      --prefix PATH : "${lib.makeBinPath additionalPackages}"
     exit 0
   '';
 }
