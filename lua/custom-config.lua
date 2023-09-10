@@ -53,16 +53,23 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 --------------------------------------------------------------------------------
+-- Folding                                                                    --
+--------------------------------------------------------------------------------
+vim.wo.foldmethod = "expr"
+vim.wo.foldlevel = 2
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd([[autocmd BufEnter *.nix setlocal foldlevel=4]])
+
+--------------------------------------------------------------------------------
 -- Plugins                                                                    --
 --------------------------------------------------------------------------------
-
 require('lualine').setup()
 require('Comment').setup()
 require('indent_blankline').setup()
 require('fidget').setup()
 require('nvim-autopairs').setup()
 require('colorizer').setup()
-require('nvim-treesitter.configs').setup({})
+require('nvim-treesitter.configs').setup({highlight = {enable = true}})
 require('nvim-web-devicons').setup()
 require("toggleterm").setup({open_mapping = [[<c-\>]], terminal_mappings = true})
 require('todo-comments').setup()
