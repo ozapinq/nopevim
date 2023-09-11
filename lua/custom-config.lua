@@ -71,7 +71,7 @@ require('nvim-autopairs').setup()
 require('colorizer').setup()
 require('nvim-treesitter.configs').setup({highlight = {enable = true}})
 require('nvim-web-devicons').setup()
-require("toggleterm").setup({open_mapping = [[<c-\>]], terminal_mappings = true})
+require("toggleterm").setup({open_mapping = [[<c-0>]], terminal_mappings = true})
 require('todo-comments').setup()
 require('modicator').setup()
 
