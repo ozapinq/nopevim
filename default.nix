@@ -125,6 +125,7 @@ let
     pkgs.python311
     pkgs.ripgrep
     pkgs.which
+    pkgs.nodePackages.pyright
   ];
 in pkgs.stdenv.mkDerivation {
   name = "nopevim";
