@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.wo.foldmethod = "expr"
 vim.wo.foldlevel = 2
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-vim.cmd([[autocmd BufEnter *.nix setlocal foldlevel=4]])
+vim.cmd([[autocmd BufRead *.nix setlocal foldlevel=4]])
 
 --------------------------------------------------------------------------------
 -- Plugins                                                                    --
