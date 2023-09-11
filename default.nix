@@ -36,7 +36,6 @@ let
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
           modificator-nvim
-          alpha-nvim
           comment-nvim
           coq-artifacts
           coq_nvim
