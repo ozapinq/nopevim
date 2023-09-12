@@ -35,7 +35,6 @@ let
 
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
-          modificator-nvim
           comment-nvim
           coq-artifacts
           coq_nvim
@@ -44,6 +43,7 @@ let
           gruvbox
           indent-blankline-nvim
           lualine-nvim
+          modificator-nvim
           neodev-nvim
           neoformat
           nui-nvim
@@ -104,6 +104,7 @@ let
           vim-fugitive
           vim-rhubarb
           vim-sleuth
+          vim-tmux-navigator
           which-key-nvim
         ];
       };
