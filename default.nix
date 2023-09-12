@@ -103,7 +103,6 @@ let
           vim-colorschemes
           vim-fugitive
           vim-rhubarb
-          vim-sleuth
           vim-tmux-navigator
           which-key-nvim
         ];
@@ -111,22 +110,23 @@ let
     };
   };
 
-  additionalPackages = [
-    pkgs.bash
-    pkgs.black
-    pkgs.fd
-    pkgs.git
-    pkgs.lazygit
-    pkgs.lua
-    pkgs.lua-language-server
-    pkgs.luaformatter
-    pkgs.neovim
-    pkgs.niv
-    pkgs.nixfmt
-    pkgs.python311
-    pkgs.ripgrep
-    pkgs.which
-    pkgs.nodePackages.pyright
+  additionalPackages = with pkgs; [
+    bash
+    black
+    entr
+    fd
+    git
+    lazygit
+    lua
+    lua-language-server
+    luaformatter
+    neovim
+    niv
+    nixfmt
+    nodePackages.pyright
+    python311
+    ripgrep
+    which
   ];
 in pkgs.stdenv.mkDerivation {
   name = "nopevim";
@@ -137,6 +137,5 @@ in pkgs.stdenv.mkDerivation {
   postInstall = ''
     makeWrapper ${neovim}/bin/nvim $out/bin/nopevim \
       --prefix PATH : "${lib.makeBinPath additionalPackages}"
-    exit 0
   '';
 }

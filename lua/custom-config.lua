@@ -39,7 +39,6 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- [[ Highlight on yank ]]
@@ -53,12 +52,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 --------------------------------------------------------------------------------
--- Folding                                                                    --
+-- Folding and indentation                                                    --
 --------------------------------------------------------------------------------
 vim.wo.foldmethod = "expr"
 vim.wo.foldlevel = 2
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 vim.cmd([[autocmd BufRead *.nix setlocal foldlevel=4]])
+vim.cmd([[
+  set expandtab
+  set shiftwidth=2
+  set softtabstop=2
+  set tabstop=2
+
+  autocmd FileType python	setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+  autocmd FileType make 	setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+]])
 
 --------------------------------------------------------------------------------
 -- Plugins                                                                    --
