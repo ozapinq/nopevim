@@ -83,6 +83,8 @@ require("toggleterm").setup({open_mapping = [[<c-0>]], terminal_mappings = true}
 require('todo-comments').setup()
 require('modicator').setup()
 
+vim.g.coq_settings = {keymap = {jump_to_mark = '`'}}
+
 require('config_keymap')
 require('config_gitsigns')
 require('config_lsp')
