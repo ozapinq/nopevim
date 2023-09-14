@@ -102,6 +102,7 @@ let
           vim-ai
           vim-colorschemes
           vim-fugitive
+          vim-obsession
           vim-rhubarb
           vim-tmux-navigator
           which-key-nvim

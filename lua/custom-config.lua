@@ -92,3 +92,6 @@ require('config_telescope')
 require('config_nvimtree')
 
 vim.cmd('COQnow --shut-up')
+vim.cmd([[
+  autocmd VimEnter * Obsess
+]])
