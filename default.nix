@@ -125,8 +125,10 @@ let
     niv
     nixfmt
     nodePackages.pyright
+    nodePackages.bash-language-server
     python311
     ripgrep
+    shfmt
     which
   ];
 in pkgs.stdenv.mkDerivation {
