@@ -3,6 +3,6 @@
 ## Installation
 
 ```shell
-$ nix-env --install -f ./default.nix
+$ nix-env --install
 $ nopevim
 ```
