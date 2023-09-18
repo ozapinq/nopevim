@@ -72,19 +72,19 @@ vim.cmd([[
 --------------------------------------------------------------------------------
 -- Plugins                                                                    --
 --------------------------------------------------------------------------------
-require('lualine').setup()
-require('Comment').setup()
-require('indent_blankline').setup()
-require('fidget').setup()
-require('nvim-autopairs').setup()
-require('colorizer').setup()
-require('nvim-treesitter.configs').setup({highlight = {enable = true}})
-require('nvim-web-devicons').setup()
 require("toggleterm").setup({open_mapping = [[<c-0>]], terminal_mappings = true})
-require('todo-comments').setup()
+require('Comment').setup()
+require('colorizer').setup()
+require('copilot').setup({})
+require('fidget').setup()
+require('indent_blankline').setup()
+require('lualine').setup()
 require('modicator').setup()
 require('neoscroll').setup()
-require('copilot').setup({})
+require('nvim-autopairs').setup()
+require('nvim-treesitter.configs').setup({highlight = {enable = true}})
+require('nvim-web-devicons').setup()
+require('todo-comments').setup()
 
 vim.g.coq_settings = {keymap = {jump_to_mark = '`'}}
 
