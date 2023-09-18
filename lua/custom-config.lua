@@ -65,6 +65,7 @@ vim.cmd([[
   set tabstop=2
 
   autocmd FileType python	setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+  autocmd FileType rust 	setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
   autocmd FileType make 	setlocal noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
 ]])
 

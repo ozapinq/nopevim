@@ -131,6 +131,7 @@ let
     ripgrep
     shfmt
     which
+    rust-analyzer
   ];
 in pkgs.stdenv.mkDerivation {
   name = "nopevim";
