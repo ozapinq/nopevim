@@ -11,6 +11,16 @@ let
     };
   };
 
+  copilot-lua = pkgs.vimUtils.buildVimPlugin rec {
+    name = src.repo;
+    src = pkgs.fetchFromGitHub {
+      owner = "zbirenbaum";
+      repo = "copilot.lua";
+      rev = "2c942f33ba5c621c906e625e00a1bb504b65e2f0";
+      sha256 = "sha256-YTq8bcPXKHT96sm+Ov5MulDvWzlK8BI3ehu8q4XDmzc=";
+    };
+  };
+
   modificator-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "modificator-nvim";
     src = pkgs.fetchFromGitHub {
@@ -36,6 +46,7 @@ let
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
           comment-nvim
+          copilot-lua
           coq-artifacts
           coq_nvim
           fidget-nvim

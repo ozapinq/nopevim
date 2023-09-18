@@ -84,6 +84,7 @@ require("toggleterm").setup({open_mapping = [[<c-0>]], terminal_mappings = true}
 require('todo-comments').setup()
 require('modicator').setup()
 require('neoscroll').setup()
+require('copilot').setup({})
 
 vim.g.coq_settings = {keymap = {jump_to_mark = '`'}}
 
