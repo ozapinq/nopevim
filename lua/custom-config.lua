@@ -51,6 +51,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*'
 })
 
+vim.o.langmap="ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz"
+
 --------------------------------------------------------------------------------
 -- Folding and indentation                                                    --
 --------------------------------------------------------------------------------
