@@ -136,6 +136,7 @@ let
     neovim
     niv
     nixfmt
+    nodejs
     nodePackages.pyright
     nodePackages.bash-language-server
     python311
