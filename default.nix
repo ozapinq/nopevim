@@ -105,6 +105,7 @@ let
           nvim-treesitter-textobjects
           nvim-web-devicons
           onedark-vim
+          plantuml-syntax
           plenary-nvim
           telescope-fzf-native-nvim
           telescope-nvim
