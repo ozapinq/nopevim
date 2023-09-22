@@ -98,5 +98,5 @@ require('config_nvimtree')
 
 vim.cmd('COQnow --shut-up')
 vim.cmd([[
-  autocmd VimEnter * Obsess
+  autocmd VimEnter * if ObsessionStatus() == '' | Obsess | endif
 ]])
