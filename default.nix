@@ -57,7 +57,6 @@ let
           modificator-nvim
           neodev-nvim
           neoformat
-          neoscroll-nvim
           nui-nvim
           nvim-autopairs
           nvim-colorizer-lua
