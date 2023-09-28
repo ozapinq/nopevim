@@ -47,8 +47,12 @@ let
         start = [
           comment-nvim
           copilot-lua
-          coq-artifacts
-          coq_nvim
+          coc-rust-analyzer
+          coc-pyright
+          coc-nvim
+          coc-yaml
+          coc-html
+          coc-tsserver
           fidget-nvim
           gitsigns-nvim
           gruvbox

@@ -87,15 +87,13 @@ require('nvim-treesitter.configs').setup({highlight = {enable = true}})
 require('nvim-web-devicons').setup()
 require('todo-comments').setup()
 
-vim.g.coq_settings = {keymap = {jump_to_mark = '`'}}
 
+require('config_coc')
 require('config_keymap')
 require('config_gitsigns')
-require('config_lsp')
 require('config_telescope')
 require('config_nvimtree')
 
-vim.cmd('COQnow --shut-up')
 vim.cmd([[
   autocmd VimEnter * if ObsessionStatus() == '' | Obsess | endif
 ]])
